@@ -1,0 +1,7 @@
+.navbar-brand img{
+    width: 100px;
+    height: 30px;
+}
+.nav-link.active{
+    border-bottom: 2px solid gray;
+}
