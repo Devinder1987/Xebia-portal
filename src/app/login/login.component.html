@@ -1,21 +1,22 @@
 <div class="login-box">
   <p class="text-center login-text"> <b> Login</b> </p>
   <hr/>
-  <form (ngSubmit)="onSubmit()" #loginForm="ngForm" >
-  <div class="form-group">
-    <label for="userName">Emp ID</label>
-    <input type="text" class="form-control" id="userName" required [(ngModel)]="model.userName" name="userName" #userName="ngModel">
-    <div [hidden]="userName.valid || userName.pristine" class="text-danger">
-      Please enter emp id like xi123
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <div class="form-group">
+      <label for="userName">Emp ID</label>
+      <input type="text" class="form-control" id="userName" required [(ngModel)]="model.userName" name="userName" #userName="ngModel">
+      <div [hidden]="userName.valid || userName.pristine" class="text-danger">
+        Please enter emp id like xi123
+      </div>
     </div>
-  </div>
-  <div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password" required [(ngModel)]="model.password" name="password" #password="ngModel">
-    <div [hidden]="password.valid || password.pristine" class="text-danger">
-      Please enter password
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" required [(ngModel)]="model.password" name="password" #password="ngModel">
+      <div [hidden]="password.valid || password.pristine" class="text-danger">
+        Please enter password
+      </div>
     </div>
-  </div>
-  <button type="submit" class="btn btn-primary pull-right">Submit</button>
-</form>
+    <div class="text-danger" [hidden]="!loginFailed">Please enter valid username and password. </div>
+    <button type="submit" class="btn btn-primary pull-right">Submit</button>
+  </form>
 </div>

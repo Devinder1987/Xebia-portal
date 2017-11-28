@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginData } from './login.model';
+import { LoginData } from '../services/model.service';
 import { LoginApiService } from '../services/login-api.service';
 
 @Component({
@@ -9,10 +9,12 @@ import { LoginApiService } from '../services/login-api.service';
 })
 export class LoginComponent implements OnInit {
   model = new LoginData('', '');
+  loginFailed = false;
   constructor(private loginApi: LoginApiService) { }
   ngOnInit() {
   }
   onSubmit = () => {
+    this.loginFailed = !this.loginFailed;
     this.loginApi.login(this.model);
   }
 

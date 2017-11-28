@@ -8,6 +8,7 @@
     border: 2px solid #ededf1;
     padding: 10px;
     border-radius: 5px;
+    min-width: 390px;
 }
 .login-text{
     text-align: center;

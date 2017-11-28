@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 // Router
 import { AppRoutingModule } from './app.router';
 
@@ -27,7 +28,7 @@ import { HTTPService } from './services/http-call.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [LoginApiService, HTTPService],
+  providers: [LoginApiService, HTTPService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
