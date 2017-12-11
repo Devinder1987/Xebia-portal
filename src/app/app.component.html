@@ -1,4 +1,7 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<app-home></app-home>
+<div class="container-fluid">
+<router-outlet></router-outlet>
 
-
+<app-modal [hidden]="modal.hideModal"
+[modalHeader]="modal.modalHeader"
+[modalBody]="modal.modalBody" (closeModal)="closeModal()"></app-modal>
+</div>

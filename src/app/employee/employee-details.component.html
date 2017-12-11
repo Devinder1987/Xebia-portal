@@ -1,0 +1,46 @@
+<header>
+    <p>Employee Details</p>
+</header>
+<section>
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <div class="form-group row">
+            <label for="userName" class="col col-4 col-form-label ">Emp ID: </label>
+            <input type="text" class="form-control col col-4" required [(ngModel)]="empData.emp_id" name="empID" #empID="ngModel">
+        </div>
+        <div class="form-group row">
+            <label for="userName" class="col col-4 col-form-label">Name: </label>
+            <input type="text" class="form-control col col-7" required [(ngModel)]="empData.name" name="empName" #empName="ngModel">
+        </div>
+        <div class="form-group row">
+            <label for="userName" class="col col-4 col-form-label">Title: </label>
+            <select class="custom-select col-7" [(ngModel)]="empData.title" name="empTitle" #empTitle="ngModel">
+                    <option value="" selected>Select Title</option>
+                    <option value="Consultant">Consultant</option>
+                    <option value="Senior Consultant">Senior Consultant</option>
+                    <!--<option *ngFor="let eTitle of titleList" [value]="eTitle.id">{{eTitle.name}}</option>-->
+                </select>
+        </div>
+        <div class="form-group row">
+            <label for="userName" class="col col-4">Status: </label>
+            <select class="custom-select col-7" [(ngModel)]="empData.status" name="empStatus" #empStatus="ngModel">
+                    <option value="" selected>Select Status</option>
+                    <option value="Deployable">Deployable</option>
+                    <option value="Soft Blocked">Soft Blocked</option>
+                </select>
+        </div>
+        <div class="form-group row">
+            <label for="userName" class="col col-4">Joining Date: </label>
+            <input type="text" class="form-control col col-4" required [(ngModel)]="empData.doj" name="userName" #userName="ngModel">
+        </div>
+        <div class="form-group row">
+            <label for="userName" class="col col-4">End Date: </label>
+            <input type="text" class="form-control col col-4" required [(ngModel)]="empData.doe" name="userName" #userName="ngModel">
+        </div>
+        <section class="row">
+            <div class="col-4 centered-text"><button type="button" class="btn btn-primary col-8">Edit</button></div>
+            <div class="col-4 centered-text"><button type="button" class="btn btn-primary col-8">Block</button></div>
+            <div class="col-4 centered-text"><button type="button" class="btn btn-primary col-8">Soft Block</button></div>
+            <div class="col-12 centered-text"><button type="button" class="btn btn-primary col-4" (click)="createEmp()">Save</button></div>
+        </section>
+    </form>
+</section>

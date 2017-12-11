@@ -9,6 +9,13 @@ export class HomeComponent implements OnInit {
   seachModel = new SearchID('');
   suggestionList = [1234, 2345, 3456];
   showSuggestion: Boolean = false;
+  homePages = [
+    // {routerLink: '/login', routerText: 'Login'},
+    {routerLink: '/home/report', routerText: 'Account Report'},
+    {routerLink: '/home/pReport', routerText: 'Project Report'},
+    {routerLink: '/home/eReport', routerText: 'Employee Report'},
+    {routerLink: '/home/eSearch', routerText: 'Employee Search'}
+  ];
   constructor() { }
 
   ngOnInit() {

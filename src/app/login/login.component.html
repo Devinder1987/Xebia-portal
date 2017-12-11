@@ -16,7 +16,7 @@
         Please enter password
       </div>
     </div>
-    <div class="text-danger" [hidden]="!loginFailed">Please enter valid username and password. </div>
+    <div class="text-danger" [hidden]="!LoginSuccess">{{this.loginApi.errorMsg}}</div>
     <button type="submit" class="btn btn-primary pull-right">Submit</button>
   </form>
 </div>

@@ -8,10 +8,12 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class ReportComponent implements OnInit {
 
-  constructor(private cookieService: CookieService) { }
+  constructor(private cookieService: CookieService) {
+    this.cookieValue = this.cookieService.get('authToken');
+  }
   cookieValue: string;
   ngOnInit() {
-    this.cookieValue = this.cookieService.get('Test');
+    this.cookieValue = this.cookieService.get('authToken');
   }
 
 }

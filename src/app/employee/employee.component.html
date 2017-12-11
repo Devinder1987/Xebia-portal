@@ -1,0 +1,21 @@
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Emp ID</th>
+        <th>Name</th>
+        <th>Title</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employeeDetails" (click)="viewEmployeeDetails()">
+        <td>{{employee.id}}</td>
+        <td>{{employee.name}}</td>
+        <td>{{employee.title}}</td>
+        <td [class]="employee.status">{{employee.status}}</td>
+      </tr>
+      </tbody>
+  </table>
+  <a [routerLink]="['/home', empData.id]">Details</a>
+
+  <!--<app-employee-detail [hidden]="empDetails.hideEmpDetails" (closeEmpDetails)="closeEmpDetails()" [empData]="empData"></app-employee-detail>-->

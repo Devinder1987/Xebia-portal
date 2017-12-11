@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-const domainUrl = 'http://localhost:3000/';
+const domainUrl = 'http://localhost:8080/';
 const httpOptions = {
-  headers: new HttpHeaders({ 'Access-Control-Allow-Origin': '*'})
+    headers: new HttpHeaders({ 'Access-Control-Allow-Origin': '*' })
 };
 @Injectable()
 export class HTTPService {
@@ -15,16 +15,15 @@ export class HTTPService {
     }
     postCall(requestUrl, body, successFn, failedFn) {
         const url = domainUrl + requestUrl;
-        body = {
-            username: 'Devinder',
-            password: 'Suthwal'
-        };
         this.http.post(url, body, httpOptions).subscribe(data => {
             successFn(data);
         },
-        err => {
-            failedFn();
-        });
+            err => {
+                if (err.status === 0) {
+                    alert('Oops Server is on strike!!!');
+                }
+                failedFn(err);
+            });
     }
     putCall(requestUrl, model, successFn, failedFn) {
         const url = domainUrl + requestUrl;

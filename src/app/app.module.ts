@@ -10,7 +10,12 @@ import { AppRoutingModule } from './app.router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './home/about.component';
 import { ReportComponent } from './report/report.component';
+import { ModalComponent, ModalService } from './modal/modal.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { EmployeeDetailsComponent } from './employee/employee-details.component';
+
 // Service
 import { LoginApiService } from './services/login-api.service';
 import { HTTPService } from './services/http-call.service';
@@ -20,7 +25,11 @@ import { HTTPService } from './services/http-call.service';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ReportComponent
+    AboutComponent,
+    ReportComponent,
+    ModalComponent,
+    EmployeeComponent,
+    EmployeeDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +37,7 @@ import { HTTPService } from './services/http-call.service';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [LoginApiService, HTTPService, CookieService],
+  providers: [LoginApiService, HTTPService, CookieService, ModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
