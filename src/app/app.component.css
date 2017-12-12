@@ -1,0 +1,7 @@
+.ngx-datepicker-container{
+    z-index: 10000 !important;
+}
+.ngx-datepicker-input[_ngcontent-c4]{
+    font-size: inherit !important;
+    border: 0 !important;
+}

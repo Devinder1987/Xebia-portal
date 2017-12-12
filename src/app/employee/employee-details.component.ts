@@ -1,6 +1,9 @@
 import { Component, OnInit, Injectable, Input, EventEmitter, Output } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EmployeeApiService } from '../services/employee-api.service';
+import { DatepickerOptions } from 'ng2-datepicker';
+import * as frLocale from 'date-fns/locale/fr';
 
 const titleList = [
     {
@@ -32,6 +35,7 @@ interface Employee {
     email: string;
     phone: number;
     doj: string;
+    doe: string;
     title: string;
     role: string;
 }
@@ -53,6 +57,14 @@ export class EmployeeDetailsComponent implements OnInit {
     empData: Employee;
     titleList: Array<Object>;
     statusList: Array<string>;
+    options: DatepickerOptions = {
+        minYear: 1970,
+        maxYear: 2030,
+        displayFormat: 'MMM D[,] YYYY',
+        barTitleFormat: 'MMMM YYYY',
+        firstCalendarDay: 0, // 0 - Sunday, 1 - Monday
+        locale: frLocale
+    };
     constructor(private empDetails: EmpDetailsService,
         private empApi: EmployeeApiService) {
         this.empData = {
@@ -60,9 +72,10 @@ export class EmployeeDetailsComponent implements OnInit {
             emp_id: 'XI619',
             emp_type: 'Permanent',
             status: 'Deployable',
-            email: 'd.shutwal',
+            email: 'd.shutwal@gmail.com',
             phone: 969270067,
             doj: '2017-01-16', // date(yyyy-mm-dd)
+            doe: '2999-12-31',
             title: 'Senior Consultant',
             role: 'Developer'
         };

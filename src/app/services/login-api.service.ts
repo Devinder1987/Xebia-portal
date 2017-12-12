@@ -19,7 +19,7 @@ export class LoginApiService {
     const loginSuccess = (successData) => {
       switch (successData.code) {
         case 1000:
-          // this.cookieService.set('authToken', successData.authToken);
+          this.cookieService.set('authToken', successData.authToken);
           this.router.navigate(['./home']);
           this.LoginSuccess = true;
           success();
