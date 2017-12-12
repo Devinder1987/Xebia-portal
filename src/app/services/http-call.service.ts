@@ -10,15 +10,17 @@ export class HTTPService {
             successFn(data);
         });
     }
-    postCall(requestUrl, body, successFn, failedFn) {
+    postCall(requestUrl, body, successFn, failedFn,cred=false) {
         const url = domainUrl + requestUrl;
-        const authToken = this.cookieService.get('authToken');
+        const authToken = this.cookieService.get('connect.sid');
+        
         const httpOptions = {
-            headers: new HttpHeaders({ 'Access-Control-Allow-Origin': '*',
-            'authToken': authToken })
+            withCredentials:true,
+            headers: new HttpHeaders({ 'Access-Control-Allow-Origin': '*' })
         };
         this.http.post(url, body, httpOptions).subscribe(data => {
             successFn(data);
+
         },
             err => {
                 if (err.status === 0) {
