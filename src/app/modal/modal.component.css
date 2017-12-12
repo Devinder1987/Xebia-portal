@@ -7,3 +7,7 @@
     left: 0;
     background: #000000a3;
 }
+.modal-content{
+    position: fixed;
+    top: 5vh;
+}

@@ -3,6 +3,7 @@ import { DatePipe } from '@angular/common';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EmployeeApiService } from '../services/employee-api.service';
 import { DatepickerOptions } from 'ng2-datepicker';
+import { ModalService } from '../modal/modal.component';
 import * as frLocale from 'date-fns/locale/fr';
 
 const titleList = [
@@ -39,6 +40,132 @@ interface Employee {
     title: string;
     role: string;
 }
+const createConfig = {
+    name: {
+        hidden: false,
+        disabled: true
+    },
+    emp_id: {
+        hidden: false,
+        disabled: true
+    },
+    emp_type: {
+        hidden: false,
+        disabled: true
+    },
+    status: {
+        hidden: false,
+        disabled: true
+    },
+    email: {
+        hidden: false,
+        disabled: true
+    },
+    phone: {
+        hidden: false,
+        disabled: true
+    },
+    doj: {
+        hidden: false,
+        disabled: true
+    },
+    doe: {
+        hidden: false,
+        disabled: true
+    },
+    title: {
+        hidden: false,
+        disabled: true
+    },
+    role: {
+        hidden: false,
+        disabled: true
+    },
+};
+const editConfig = {
+    name: {
+        hidden: false,
+        disabled: true
+    },
+    emp_id: {
+        hidden: false,
+        disabled: true
+    },
+    emp_type: {
+        hidden: false,
+        disabled: true
+    },
+    status: {
+        hidden: false,
+        disabled: true
+    },
+    email: {
+        hidden: false,
+        disabled: true
+    },
+    phone: {
+        hidden: false,
+        disabled: true
+    },
+    doj: {
+        hidden: false,
+        disabled: true
+    },
+    doe: {
+        hidden: false,
+        disabled: true
+    },
+    title: {
+        hidden: false,
+        disabled: true
+    },
+    role: {
+        hidden: false,
+        disabled: true
+    },
+};
+const viewConfig = {
+    name: {
+        hidden: false,
+        disabled: true
+    },
+    emp_id: {
+        hidden: false,
+        disabled: true
+    },
+    emp_type: {
+        hidden: false,
+        disabled: true
+    },
+    status: {
+        hidden: false,
+        disabled: true
+    },
+    email: {
+        hidden: false,
+        disabled: true
+    },
+    phone: {
+        hidden: false,
+        disabled: true
+    },
+    doj: {
+        hidden: false,
+        disabled: true
+    },
+    doe: {
+        hidden: false,
+        disabled: true
+    },
+    title: {
+        hidden: false,
+        disabled: true
+    },
+    role: {
+        hidden: false,
+        disabled: true
+    },
+};
 
 @Injectable()
 export class EmpDetailsService {
@@ -57,6 +184,7 @@ export class EmployeeDetailsComponent implements OnInit {
     empData: Employee;
     titleList: Array<Object>;
     statusList: Array<string>;
+    configProp: Object;
     options: DatepickerOptions = {
         minYear: 1970,
         maxYear: 2030,
@@ -66,7 +194,8 @@ export class EmployeeDetailsComponent implements OnInit {
         locale: frLocale
     };
     constructor(private empDetails: EmpDetailsService,
-        private empApi: EmployeeApiService) {
+        private empApi: EmployeeApiService,
+        private modal: ModalService) {
         this.empData = {
             name: 'Devinder Suthwal',
             emp_id: 'XI619',
@@ -79,9 +208,20 @@ export class EmployeeDetailsComponent implements OnInit {
             title: 'Senior Consultant',
             role: 'Developer'
         };
+        this.configProp = createConfig;
     }
     createEmp = () => {
-        this.empApi.createEmployee(this.empData);
+        this.empApi.createEmployee(this.empData, this.createEmpSuccess, this.createEmpFailed);
+    }
+    createEmpSuccess() {
+        this.modal.modalHeader = 'Employee Creation Success!!!';
+        this.modal.modalBody = 'Employee created successfully.';
+        this.modal.hideModal = false;
+    }
+    createEmpFailed = () => {
+        this.modal.modalHeader = 'Employee Creation Failed!!!';
+        this.modal.modalBody = 'Employee creation failed due to some reasion.';
+        this.modal.hideModal = false;
     }
     ngOnInit() {
         this.titleList = titleList;

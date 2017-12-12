@@ -3,60 +3,60 @@
 </header>
 <section>
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-        <div class="form-group row">
-            <label for="userName" class="col col-4 col-form-label ">Emp ID: </label>
-            <input type="text" class="form-control col col-4" required [(ngModel)]="empData.emp_id" name="empID" #empID="ngModel">
+        <div class="form-group row" [hidden]="configProp.emp_id.hidden">
+            <label for="empID" class="col col-4 col-form-label ">Emp ID: </label>
+            <input type="text" class="form-control col col-4" required [(ngModel)]="empData.emp_id" name="empID" #empID="ngModel" [disabled]="configProp.emp_id.disabled">
         </div>
-        <div class="form-group row">
-            <label for="userName" class="col col-4 col-form-label ">E-mail: </label>
-            <input type="text" class="form-control col col-4" required [(ngModel)]="empData.email" name="email" #email="ngModel">
+        <div class="form-group row" [hidden]="configProp.email.hidden">
+            <label for="email" class="col col-4 col-form-label ">E-mail: </label>
+            <input type="text" class="form-control col col-4" required [(ngModel)]="empData.email" name="email" #email="ngModel" [disabled]="configProp.email.disabled">
         </div>
-        <div class="form-group row">
-            <label for="userName" class="col col-4 col-form-label">Name: </label>
-            <input type="text" class="form-control col col-7" required [(ngModel)]="empData.name" name="empName" #empName="ngModel">
+        <div class="form-group row" [hidden]="configProp.name.hidden">
+            <label for="empName" class="col col-4 col-form-label">Name: </label>
+            <input type="text" class="form-control col col-7" required [(ngModel)]="empData.name" name="empName" #empName="ngModel" [disabled]="configProp.name.disabled">
         </div>
-        <div class="form-group row">
-            <label for="userName" class="col col-4 col-form-label">Title: </label>
-            <select class="custom-select col-7" [(ngModel)]="empData.title" name="empTitle" #empTitle="ngModel">
+        <div class="form-group row" [hidden]="configProp.title.hidden">
+            <label for="empTitle" class="col col-4 col-form-label">Title: </label>
+            <select class="custom-select col-7" [(ngModel)]="empData.title" name="empTitle" #empTitle="ngModel" [disabled]="configProp.title.disabled">
                     <option value="" selected>Select Title</option>
                     <option value="Consultant">Consultant</option>
                     <option value="Senior Consultant">Senior Consultant</option>
                     <!--<option *ngFor="let eTitle of titleList" [value]="eTitle.id">{{eTitle.name}}</option>-->
                 </select>
         </div>
-        <div class="form-group row">
-            <label for="userName" class="col col-4">Status: </label>
-            <select class="custom-select col-7" [(ngModel)]="empData.status" name="empStatus" #empStatus="ngModel">
+        <div class="form-group row" [hidden]="configProp.status.hidden">
+            <label for="empStatus" class="col col-4">Status: </label>
+            <select class="custom-select col-7" [(ngModel)]="empData.status" name="empStatus" #empStatus="ngModel" [disabled]="configProp.status.disabled">
                     <option value="" selected>Select Status</option>
                     <option value="Deployable">Deployable</option>
                     <option value="Soft Blocked">Soft Blocked</option>
                 </select>
         </div>
-         <div class="form-group row">
-            <label for="userName" class="col col-4">Role: </label>
-            <select class="custom-select col-7" [(ngModel)]="empData.role" name="role" #role="ngModel">
+         <div class="form-group row" [hidden]="configProp.role.hidden">
+            <label for="role" class="col col-4">Role: </label>
+            <select class="custom-select col-7" [(ngModel)]="empData.role" name="role" #role="ngModel" [disabled]="configProp.role.disabled">
                     <option value="" selected>Select Role</option>
                     <option value="Developer">Developer</option>
                     <option value="Team Lead">Team Lead</option>
                 </select>
         </div>
-         <div class="form-group row">
-            <label for="userName" class="col col-4">Emp Type: </label>
-            <select class="custom-select col-7" [(ngModel)]="empData.emp_type" name="empType" #empType="ngModel">
+         <div class="form-group row" [hidden]="configProp.emp_type.hidden">
+            <label for="empType" class="col col-4">Emp Type: </label>
+            <select class="custom-select col-7" [(ngModel)]="empData.emp_type" name="empType" #empType="ngModel" [disabled]="configProp.emp_type.disabled">
                     <option value="" selected>Select Type</option>
                     <option value="Permanent">Permanent</option>
                     <option value="Contractor">Contractor</option>
                 </select>
         </div>
-        <div class="form-group row">
-            <label for="userName" class="col col-4">Joining Date: </label>
+        <div class="form-group row" [hidden]="configProp.doj.hidden">
+            <label for="doj" class="col col-4">Joining Date: </label>
             <!--<input type="text" class="form-control col col-4" required [(ngModel)]="empData.doj" name="doj" #doj="ngModel">-->
-            <ng-datepicker class="form-control col-4" required [(ngModel)]="empData.doj" name="doj" #doj="ngModel"></ng-datepicker>
+            <ng-datepicker class="form-control col-4" required [(ngModel)]="empData.doj" name="doj" #doj="ngModel" [disabled]="configProp.doj.disabled"></ng-datepicker>
         </div>
-        <div class="form-group row">
-            <label for="userName" class="col col-4">End Date: </label>
+        <div class="form-group row" [hidden]="configProp.doe.hidden">
+            <label for="doe" class="col col-4">End Date: </label>
             <!--<input type="text" class="form-control col col-4" required [(ngModel)]="empData.doe" name="doe" #doe="ngModel">-->
-            <ng-datepicker class="form-control col-4" required [(ngModel)]="empData.doe" name="doe" #doe="ngModel"></ng-datepicker>
+            <ng-datepicker class="form-control col-4" required [(ngModel)]="empData.doe" name="doe" #doe="ngModel" [disabled]="configProp.doe.disabled"></ng-datepicker>
         </div>
         <section class="row">
             <div class="col-4 centered-text"><button type="button" class="btn btn-primary col-8">Edit</button></div>
