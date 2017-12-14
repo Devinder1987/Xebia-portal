@@ -4,6 +4,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { EmployeeApiService } from '../services/employee-api.service';
 import { DatepickerOptions } from 'ng2-datepicker';
 import { ModalService } from '../modal/modal.component';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as frLocale from 'date-fns/locale/fr';
 
 const titleList = [
@@ -43,43 +44,43 @@ interface Employee {
 const createConfig = {
     name: {
         hidden: false,
-        disabled: true
+        disabled: false
     },
     emp_id: {
         hidden: false,
-        disabled: true
+        disabled: false
     },
     emp_type: {
         hidden: false,
-        disabled: true
+        disabled: false
     },
     status: {
         hidden: false,
-        disabled: true
+        disabled: false
     },
     email: {
         hidden: false,
-        disabled: true
+        disabled: false
     },
     phone: {
         hidden: false,
-        disabled: true
+        disabled: false
     },
     doj: {
         hidden: false,
-        disabled: true
+        disabled: false
     },
     doe: {
         hidden: false,
-        disabled: true
+        disabled: false
     },
     title: {
         hidden: false,
-        disabled: true
+        disabled: false
     },
     role: {
         hidden: false,
-        disabled: true
+        disabled: false
     },
 };
 const editConfig = {
@@ -171,6 +172,7 @@ const viewConfig = {
 export class EmpDetailsService {
     EmpData = {};
     hideEmpDetails = true;
+    empID = 'XI619';
 }
 
 @Component({
@@ -178,13 +180,14 @@ export class EmpDetailsService {
     selector: 'app-employee-detail',
     templateUrl: 'employee-details.component.html',
     styleUrls: ['./employee.component.css'],
-    providers: [EmpDetailsService, EmployeeApiService]
+    providers: [EmployeeApiService]
 })
 export class EmployeeDetailsComponent implements OnInit {
     empData: Employee;
     titleList: Array<Object>;
     statusList: Array<string>;
     configProp: Object;
+    isSave: Boolean = false;
     options: DatepickerOptions = {
         minYear: 1970,
         maxYear: 2030,
@@ -195,7 +198,9 @@ export class EmployeeDetailsComponent implements OnInit {
     };
     constructor(private empDetails: EmpDetailsService,
         private empApi: EmployeeApiService,
-        private modal: ModalService) {
+        private modal: ModalService,
+        private route: ActivatedRoute,
+        private router: Router) {
         this.empData = {
             name: 'Devinder Suthwal',
             emp_id: 'XI619',
@@ -208,12 +213,29 @@ export class EmployeeDetailsComponent implements OnInit {
             title: 'Senior Consultant',
             role: 'Developer'
         };
+        const empID = this.route.snapshot.params['emp_id'];
+        this.configProp = viewConfig;
+        this.displayEmpDetail(empID);
+    }
+    displayEmpDetail = (empID) => {
+        const empListSuccess = (data) => {
+            this.empData = data;
+        };
+        const empListFailed = (err) => {
+            alert(err);
+        };
+        this.empApi.empDetail(empID, empListSuccess, empListFailed);
+    }
+    editEmpDetails = () => {
         this.configProp = createConfig;
+        this.isSave = true;
     }
     createEmp = () => {
+        this.configProp = viewConfig;
+        this.isSave = false;
         this.empApi.createEmployee(this.empData, this.createEmpSuccess, this.createEmpFailed);
     }
-    createEmpSuccess() {
+    createEmpSuccess = () => {
         this.modal.modalHeader = 'Employee Creation Success!!!';
         this.modal.modalBody = 'Employee created successfully.';
         this.modal.hideModal = false;

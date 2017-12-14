@@ -2,33 +2,27 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
 const domainUrl = 'http://localhost:8080/';
+const httpOptions = {
+    withCredentials: true,
+    headers: new HttpHeaders({ 'Access-Control-Allow-Origin': '*' })
+};
 @Injectable()
 export class HTTPService {
     getCall(requestUrl, successFn, failedFn) {
         const url = domainUrl + requestUrl;
-        this.http.get(url).subscribe(data => {
+        this.http.get(url, httpOptions).subscribe(data => {
             successFn(data);
+        }, err => {
+            failedFn(err);
         });
     }
-    postCall(requestUrl, body, successFn, failedFn,cred=false) {
+    postCall(requestUrl, body, successFn, failedFn, cred = false) {
         const url = domainUrl + requestUrl;
-        const authToken = this.cookieService.get('connect.sid');
-        
-        const httpOptions = {
-            withCredentials:true,
-            headers: new HttpHeaders({ 'Access-Control-Allow-Origin': '*' })
-        };
         this.http.post(url, body, httpOptions).subscribe(data => {
             successFn(data);
-
-        },
-            err => {
-                if (err.status === 0) {
-                    alert('Oops Server is on strike!!!');
-                } else {
-                    failedFn(err);
-                }
-            });
+        }, err => {
+            failedFn(err);
+        });
     }
     putCall(requestUrl, model, successFn, failedFn) {
         const url = domainUrl + requestUrl;
@@ -43,5 +37,5 @@ export class HTTPService {
         });
     }
     constructor(private http: HttpClient,
-    private cookieService: CookieService) { }
+        private cookieService: CookieService) { }
 }

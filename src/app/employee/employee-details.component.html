@@ -32,7 +32,7 @@
                     <option value="Soft Blocked">Soft Blocked</option>
                 </select>
         </div>
-         <div class="form-group row" [hidden]="configProp.role.hidden">
+        <div class="form-group row" [hidden]="configProp.role.hidden">
             <label for="role" class="col col-4">Role: </label>
             <select class="custom-select col-7" [(ngModel)]="empData.role" name="role" #role="ngModel" [disabled]="configProp.role.disabled">
                     <option value="" selected>Select Role</option>
@@ -40,7 +40,7 @@
                     <option value="Team Lead">Team Lead</option>
                 </select>
         </div>
-         <div class="form-group row" [hidden]="configProp.emp_type.hidden">
+        <div class="form-group row" [hidden]="configProp.emp_type.hidden">
             <label for="empType" class="col col-4">Emp Type: </label>
             <select class="custom-select col-7" [(ngModel)]="empData.emp_type" name="empType" #empType="ngModel" [disabled]="configProp.emp_type.disabled">
                     <option value="" selected>Select Type</option>
@@ -51,18 +51,22 @@
         <div class="form-group row" [hidden]="configProp.doj.hidden">
             <label for="doj" class="col col-4">Joining Date: </label>
             <!--<input type="text" class="form-control col col-4" required [(ngModel)]="empData.doj" name="doj" #doj="ngModel">-->
-            <ng-datepicker class="form-control col-4" required [(ngModel)]="empData.doj" name="doj" #doj="ngModel" [disabled]="configProp.doj.disabled"></ng-datepicker>
+            <input type="date" class="form-control col-4" required [(ngModel)]="empData.doj" name="doj" #doj="ngModel" [disabled]="configProp.doj.disabled">
+            <!--<ng-datepicker class="form-control col-4" required [(ngModel)]="empData.doj" name="doj" #doj="ngModel" [disabled]="configProp.doj.disabled"></ng-datepicker>-->
         </div>
         <div class="form-group row" [hidden]="configProp.doe.hidden">
             <label for="doe" class="col col-4">End Date: </label>
             <!--<input type="text" class="form-control col col-4" required [(ngModel)]="empData.doe" name="doe" #doe="ngModel">-->
-            <ng-datepicker class="form-control col-4" required [(ngModel)]="empData.doe" name="doe" #doe="ngModel" [disabled]="configProp.doe.disabled"></ng-datepicker>
+            <input type="date" class="form-control col-4" required [(ngModel)]="empData.doe" name="doe" #doe="ngModel" [disabled]="configProp.doe.disabled">
+            <!--<ng-datepicker class="form-control col-4" required [(ngModel)]="empData.doe" name="doe" #doe="ngModel" [disabled]="configProp.doe.disabled"></ng-datepicker>-->
         </div>
-        <section class="row">
-            <div class="col-4 centered-text"><button type="button" class="btn btn-primary col-8">Edit</button></div>
-            <div class="col-4 centered-text"><button type="button" class="btn btn-primary col-8">Block</button></div>
-            <div class="col-4 centered-text"><button type="button" class="btn btn-primary col-8">Soft Block</button></div>
-            <div class="col-12 centered-text"><button type="button" class="btn btn-primary col-4" (click)="createEmp()">Save</button></div>
+        <section class="row" [hidden]="isSave">
+                <div class="col-4 centered-text"><button type="button" class="btn btn-primary col-8" (click)="editEmpDetails()">Edit</button></div>
+                <div class="col-4 centered-text"><button type="button" class="btn btn-primary col-8">Block</button></div>
+                <div class="col-4 centered-text"><button type="button" class="btn btn-primary col-8">Soft Block</button></div>
+        </section>
+        <section class="row" [hidden]="!isSave">
+            <div class="col-12 centered-text" [hidden]="!isSave"><button type="button" class="btn btn-primary col-4" (click)="createEmp()">Save</button></div>
         </section>
     </form>
 </section>

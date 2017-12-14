@@ -16,24 +16,24 @@ export class EmployeeApiService {
         };
         this.http.postCall(url, data, createSuccess, createFailed);
     }
-    // employeeList = (data) => {
-    //     const url = 'employeelist/';
-    //     const successFn = () => {
-    //         console.log('Success');
-    //     };
-    //     const failedFn = () => {
-    //         console.log('Failed');
-    //     };
-    //     this.http.getCall(url, successFn, failedFn);
-    // }
-    // fetchEmpoyeByID = (data) => {
-    //     const url = '/employee/:id/';
-    //     const successFn = () => {
-    //         console.log('Success');
-    //     };
-    //     const failedFn = () => {
-    //         console.log('Failed');
-    //     };
-    //     this.http.getCall(url, successFn, failedFn);
-    // }
+    employeeList = (success, failed) => {
+        const url = 'employeelist/';
+        const successFn = (data) => {
+            success(data);
+        };
+        const failedFn = (err) => {
+            failed(err);
+        };
+        this.http.getCall(url, successFn, failedFn);
+    }
+    empDetail = (empID, success, failed) => {
+        const url = `employee/${empID}`;
+        const successFn = (data) => {
+            success(data);
+        };
+        const failedFn = (err) => {
+            failed(err);
+        };
+        this.http.getCall(url, successFn, failedFn);
+    }
 }
