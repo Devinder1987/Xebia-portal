@@ -28,8 +28,8 @@
             <label for="empStatus" class="col col-4">Status: </label>
             <select class="custom-select col-7" [(ngModel)]="empData.status" name="empStatus" #empStatus="ngModel" [disabled]="configProp.status.disabled">
                     <option value="" selected>Select Status</option>
-                    <option value="Deployable">Deployable</option>
-                    <option value="Soft Blocked">Soft Blocked</option>
+                    <option value="deployable">Deployable</option>
+                    <option value="soft_blocked">Soft Blocked</option>
                 </select>
         </div>
         <div class="form-group row" [hidden]="configProp.role.hidden">

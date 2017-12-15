@@ -13,7 +13,7 @@ interface Employee {
   selector: 'app-employee',
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.css'],
-  providers: [EmployeeApiService]
+  providers: [EmpDetailsService, EmployeeApiService]
 })
 
 export class EmployeeComponent implements OnInit {

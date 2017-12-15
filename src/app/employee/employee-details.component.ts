@@ -35,7 +35,7 @@ interface Employee {
     emp_type: string;
     status: string;
     email: string;
-    phone: number;
+    phone: string;
     doj: string;
     doe: string;
     title: string;
@@ -180,7 +180,7 @@ export class EmpDetailsService {
     selector: 'app-employee-detail',
     templateUrl: 'employee-details.component.html',
     styleUrls: ['./employee.component.css'],
-    providers: [EmployeeApiService]
+    providers: [EmpDetailsService, EmployeeApiService]
 })
 export class EmployeeDetailsComponent implements OnInit {
     empData: Employee;
@@ -207,7 +207,7 @@ export class EmployeeDetailsComponent implements OnInit {
             emp_type: 'Permanent',
             status: 'Deployable',
             email: 'd.shutwal@gmail.com',
-            phone: 969270067,
+            phone: '969270067',
             doj: '2017-01-16', // date(yyyy-mm-dd)
             doe: '2999-12-31',
             title: 'Senior Consultant',
@@ -232,18 +232,31 @@ export class EmployeeDetailsComponent implements OnInit {
     }
     createEmp = () => {
         this.configProp = viewConfig;
-        this.isSave = false;
-        this.empApi.createEmployee(this.empData, this.createEmpSuccess, this.createEmpFailed);
+        const empData = {
+            name: this.empData.name,
+            emp_id: this.empData.emp_id,
+            emp_type: this.empData.emp_type,
+            status: this.empData.status,
+            email: this.empData.email,
+            phone: this.empData.phone,
+            doj: this.empData.doj,
+            // doe: this.empData.doe,
+            title: this.empData.title,
+            role: this.empData.role
+        };
+        this.empApi.createEmployee(empData, this.createEmpSuccess, this.createEmpFailed);
     }
     createEmpSuccess = () => {
         this.modal.modalHeader = 'Employee Creation Success!!!';
         this.modal.modalBody = 'Employee created successfully.';
         this.modal.hideModal = false;
+        this.isSave = false;
     }
     createEmpFailed = () => {
         this.modal.modalHeader = 'Employee Creation Failed!!!';
         this.modal.modalBody = 'Employee creation failed due to some reasion.';
         this.modal.hideModal = false;
+        this.isSave = false;
     }
     ngOnInit() {
         this.titleList = titleList;
