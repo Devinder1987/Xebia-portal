@@ -16,7 +16,7 @@ export class HTTPService {
             failedFn(err);
         });
     }
-    postCall(requestUrl, body, successFn, failedFn, cred = false) {
+    postCall(requestUrl, body, successFn, failedFn) {
         const url = domainUrl + requestUrl;
         this.http.post(url, body, httpOptions).subscribe(data => {
             successFn(data);
@@ -24,10 +24,12 @@ export class HTTPService {
             failedFn(err);
         });
     }
-    putCall(requestUrl, model, successFn, failedFn) {
+    putCall(requestUrl, body, successFn, failedFn) {
         const url = domainUrl + requestUrl;
-        this.http.get(url).subscribe(data => {
+        this.http.put(url, body, httpOptions).subscribe(data => {
             successFn(data);
+        }, err => {
+            failedFn(err);
         });
     }
     deleteCall(requestUrl, model, successFn, failedFn) {

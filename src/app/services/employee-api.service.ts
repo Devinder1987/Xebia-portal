@@ -7,14 +7,22 @@ export class EmployeeApiService {
     createEmployee = (data, successFn, failedFn) => {
         const url = 'create/employee/';
         const createSuccess = () => {
-            console.log('Success');
             successFn();
         };
         const createFailed = () => {
-            console.log('Failed');
             failedFn();
         };
         this.http.postCall(url, data, createSuccess, createFailed);
+    }
+    editEmployee = (data, successFn, failedFn) => {
+        const url = `employee/${data.emp_id}`;
+        const createSuccess = () => {
+            successFn();
+        };
+        const createFailed = () => {
+            failedFn();
+        };
+        this.http.putCall(url, data, createSuccess, createFailed);
     }
     employeeList = (success, failed) => {
         const url = 'employeelist/';

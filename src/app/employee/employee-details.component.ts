@@ -188,6 +188,7 @@ export class EmployeeDetailsComponent implements OnInit {
     statusList: Array<string>;
     configProp: Object;
     isSave: Boolean = false;
+    empID: string;
     options: DatepickerOptions = {
         minYear: 1970,
         maxYear: 2030,
@@ -202,24 +203,33 @@ export class EmployeeDetailsComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router) {
         this.empData = {
-            name: 'Devinder Suthwal',
-            emp_id: 'XI619',
-            emp_type: 'Permanent',
-            status: 'Deployable',
-            email: 'd.shutwal@gmail.com',
-            phone: '969270067',
-            doj: '2017-01-16', // date(yyyy-mm-dd)
-            doe: '2999-12-31',
-            title: 'Senior Consultant',
-            role: 'Developer'
+            name: '',
+            emp_id: '',
+            emp_type: '',
+            status: '',
+            email: '',
+            phone: '',
+            doj: null,
+            doe: null,
+            title: '',
+            role: ''
         };
-        const empID = this.route.snapshot.params['emp_id'];
-        this.configProp = viewConfig;
-        this.displayEmpDetail(empID);
+        this.empID = this.route.snapshot.params['emp_id'];
+        if (this.empID) {
+            this.configProp = viewConfig;
+            this.displayEmpDetail(this.empID);
+        } else {
+            this.configProp = createConfig;
+            this.isSave = true;
+        }
     }
     displayEmpDetail = (empID) => {
         const empListSuccess = (data) => {
             this.empData = data;
+            const empData = new Date(data.doj);
+
+            this.empData.doj = `${empData.getFullYear()}-${empData.getMonth()}-${empData.getDate()}`;
+            // this.empData.doj = new Date();
         };
         const empListFailed = (err) => {
             alert(err);
@@ -244,7 +254,11 @@ export class EmployeeDetailsComponent implements OnInit {
             title: this.empData.title,
             role: this.empData.role
         };
-        this.empApi.createEmployee(empData, this.createEmpSuccess, this.createEmpFailed);
+         if (this.empID) {
+            this.empApi.editEmployee(empData, this.createEmpSuccess, this.createEmpFailed);
+        } else {
+            this.empApi.createEmployee(empData, this.createEmpSuccess, this.createEmpFailed);
+        }
     }
     createEmpSuccess = () => {
         this.modal.modalHeader = 'Employee Creation Success!!!';

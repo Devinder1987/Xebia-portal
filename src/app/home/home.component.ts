@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
   showSuggestion: Boolean = false;
   homePages = [
     // {routerLink: '/login', routerText: 'Login'},
-    {routerLink: '/home/report', routerText: 'Account Report'},
+    {routerLink: '/home/empdetails', routerText: 'Create Employee'},
     {routerLink: '/home/pReport', routerText: 'Project Report'},
     {routerLink: '/home/eReport', routerText: 'Employee Report'},
     {routerLink: '/home/eSearch', routerText: 'Employee Search'}

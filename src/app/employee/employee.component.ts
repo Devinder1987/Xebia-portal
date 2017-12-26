@@ -22,42 +22,12 @@ export class EmployeeComponent implements OnInit {
   constructor( private router: Router,
   private empDetails: EmpDetailsService,
   private empApi: EmployeeApiService ) {
-  this.employeeDetails = [{
-      id: 'XI619',
-      name: 'Devinder Suthwal',
-      title: 'Senior Consultant',
-      status: 'Soft Blocked'
-    },
-    {
-      id: 'XI620',
-      name: 'Avanish Jain',
-      title: 'Delivey Manager',
-      status: 'Reigned'
-    },
-    {
-      id: 'XI621',
-      name: 'Panna Das',
-      title: 'Consultant',
-      status: 'Long Leave'
-    },
-    {
-      id: 'XI622',
-      name: 'Abhijeet Jain',
-      title: 'Tranee',
-      status: 'Deployable'
-    },
-    {
-      id: 'XI623',
-      name: 'Kapil Chaudari',
-      title: 'Consultant',
-      status: 'Staffed'
-    }
-  ];
+  this.employeeDetails = [];
   this.empData = {
-      id: 'XI619',
-      name: 'Devinder Suthwal',
-      title: 'Senior Consultant',
-      status: 'Soft Blocked'
+      id: '',
+      name: '',
+      title: '',
+      status: ''
     };
     this.displayEmpList();
   }
