@@ -53,3 +53,14 @@ button.close{
 .centered-text{
     text-align: center;
 }
+
+.detail-card{
+    color: #6a205f;
+    font-size: 12px;
+    background: #e8d7e6;
+    margin: 5px;
+    border: 2px solid #ededf1;
+    padding: 10px;
+    border-radius: 5px;
+    
+}

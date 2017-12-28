@@ -13,3 +13,29 @@
     padding: .25rem 1.25rem;
     min-width: 193px;
 }
+li>a{
+    color: #d8b7d3 !important;
+}
+
+input{
+    border-radius:0px; 
+}
+
+button{
+    border-radius:0px; 
+}
+
+
+.btn-outline-purple{
+    color: #d8b7bd;
+    background-color: transparent;
+    background-image: none;
+    border-color: #d8b7bd;
+}
+
+.btn-outline-purple:hover{
+    color: #6a205f;
+    border-color: #6a205f;
+    background-color:#d8b7bd ;
+   
+}

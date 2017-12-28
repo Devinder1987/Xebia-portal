@@ -1,3 +1,7 @@
+a{
+    color: #6a205f;
+}
+
 /* You can add global styles to this file, and also import other style files */
 .ngx-datepicker-calendar-container[_ngcontent-c4]{
     z-index: 10000 !important;
@@ -6,4 +10,22 @@
     font-size: inherit !important;
     border: 0 !important;
     padding: 0 !important;
+}
+.add_emp_btn {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+    background-color: #6a205f;
+}
+
+.add_emp_btn > .obj{
+    text-align: center;
+    font-size: 32px;
+    color: white;
+    position: relative;
+    bottom: -10%;
+   
 }
