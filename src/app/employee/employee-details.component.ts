@@ -82,6 +82,32 @@ const createConfig = {
         hidden: false,
         disabled: false
     },
+    address: {
+        addressLine1: {
+            hidden: false,
+            disabled: false
+        },
+        addressLine2: {
+            hidden: false,
+            disabled: false
+        },
+        city: {
+            hidden: false,
+            disabled: false
+        },
+        state: {
+            hidden: false,
+            disabled: false
+        },
+        country: {
+            hidden: false,
+            disabled: false
+        },
+        pinCode: {
+            hidden: false,
+            disabled: false
+        }
+    }
 };
 const editConfig = {
     name: {
@@ -124,6 +150,32 @@ const editConfig = {
         hidden: false,
         disabled: true
     },
+    address: {
+        addressLine1: {
+            hidden: false,
+            disabled: false
+        },
+        addressLine2: {
+            hidden: false,
+            disabled: false
+        },
+        city: {
+            hidden: false,
+            disabled: false
+        },
+        state: {
+            hidden: false,
+            disabled: false
+        },
+        country: {
+            hidden: false,
+            disabled: false
+        },
+        pinCode: {
+            hidden: false,
+            disabled: false
+        }
+    }
 };
 const viewConfig = {
     name: {
@@ -166,6 +218,32 @@ const viewConfig = {
         hidden: false,
         disabled: true
     },
+    address: {
+        addressLine1: {
+            hidden: false,
+            disabled: false
+        },
+        addressLine2: {
+            hidden: false,
+            disabled: false
+        },
+        city: {
+            hidden: false,
+            disabled: false
+        },
+        state: {
+            hidden: false,
+            disabled: false
+        },
+        country: {
+            hidden: false,
+            disabled: false
+        },
+        pinCode: {
+            hidden: false,
+            disabled: false
+        }
+    }
 };
 
 @Injectable()
@@ -254,7 +332,7 @@ export class EmployeeDetailsComponent implements OnInit {
             title: this.empData.title,
             role: this.empData.role
         };
-         if (this.empID) {
+        if (this.empID) {
             this.empApi.editEmployee(empData, this.createEmpSuccess, this.createEmpFailed);
         } else {
             this.empApi.createEmployee(empData, this.createEmpSuccess, this.createEmpFailed);

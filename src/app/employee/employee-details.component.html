@@ -60,6 +60,10 @@
             <label for="doe" class="col col-4">End Date: </label>
             <input type="date" class="form-control col-7" required [(ngModel)]="empData.doe" name="doe" #doe="ngModel" [disabled]="configProp.doe.disabled">
         </div>
+        <section class="row col-12">
+            <app-address-component addLabel="Current Address" addID ="current" [config]="configProp.address" class="width-100"></app-address-component>
+            <app-address-component addLabel="Permanent Address" addID="permanent" [config]="configProp.address" class="width-100"></app-address-component>
+        </section>
         <section class="row col-12" [hidden]="isSave">
                 <div class="col-4 centered-text"><button type="button" class="btn btn-primary col-8" (click)="editEmpDetails()">Edit</button></div>
                 <div class="col-4 centered-text"><button type="button" class="btn btn-primary col-8">Block</button></div>

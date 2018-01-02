@@ -3,7 +3,7 @@
     height: 30px;
 }
 .nav-link.active{
-    border-bottom: 2px solid gray;
+    border-bottom: 2px solid white;
 }
 .search-suggestion{
     position: absolute;

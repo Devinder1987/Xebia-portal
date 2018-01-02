@@ -7,6 +7,7 @@ import { ReportComponent } from './report/report.component';
 import { AboutComponent } from './home/about.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeDetailsComponent } from './employee/employee-details.component';
+import { AddressComponent } from './employee/address-component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -15,6 +16,7 @@ const routes: Routes = [
     [
       { path: '', component: EmployeeComponent },
       { path: 'empdetails', component: EmployeeDetailsComponent },
+      { path: 'address', component: AddressComponent },
       { path: 'report', component: ReportComponent, children: [
         { path: ':id', component: EmployeeDetailsComponent }
       ] }

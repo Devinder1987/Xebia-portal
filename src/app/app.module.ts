@@ -16,6 +16,7 @@ import { ReportComponent } from './report/report.component';
 import { ModalComponent, ModalService } from './modal/modal.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { EmployeeDetailsComponent } from './employee/employee-details.component';
+import { AddressComponent } from './employee/address-component';
 
 // Service
 import { LoginApiService } from './services/login-api.service';
@@ -30,7 +31,8 @@ import { HTTPService } from './services/http-call.service';
     ReportComponent,
     ModalComponent,
     EmployeeComponent,
-    EmployeeDetailsComponent
+    EmployeeDetailsComponent,
+    AddressComponent
   ],
   imports: [
     BrowserModule,
