@@ -44,4 +44,17 @@ export class EmployeeApiService {
         };
         this.http.getCall(url, successFn, failedFn);
     }
+    empAddressCreate = (empID, address, success, failed) => {
+        const url = `/address/${empID}`;
+        const successFn = (data) => {
+            success(data);
+        };
+        const failedFn = (err) => {
+            failed(err);
+        };
+        this.http.postCall(url, address, successFn, failedFn);
+    }
+    empAddressUpdate = (data, address, successFn, failedFn) => {
+
+    }
 }

@@ -2,9 +2,6 @@
     width: 100px;
     height: 30px;
 }
-.nav-link.active{
-    border-bottom: 2px solid white;
-}
 .search-suggestion{
     position: absolute;
     top: 50px;
@@ -12,9 +9,6 @@
 .list-group-item{
     padding: .25rem 1.25rem;
     min-width: 193px;
-}
-li>a{
-    color: #d8b7d3 !important;
 }
 
 input{
@@ -38,4 +32,39 @@ button{
     border-color: #6a205f;
     background-color:#d8b7bd ;
    
+}
+.xebia-logo{
+    margin-right: 0px;
+    background-color:#e8d7e6;
+    width: 150px;
+}
+.xebia-logo img{
+    width: 80%;
+    padding: 5px;
+}
+.xebia-nav{
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    background-color:#6a205f!important;
+}
+.employee-aside{
+    width: 150px;
+    position: absolute;
+    background: #efeded;
+}
+.employee-aside ul {
+    list-style-type: none;
+    padding: 0;
+}
+.employee-aside ul li{
+    color: #6a205f;
+    border-bottom: 1px solid grey;
+    padding: 5px;
+}
+.employee-aside ul li:hover{
+    color: grey;
+    background: #dedcdc;
+    cursor: pointer;
 }

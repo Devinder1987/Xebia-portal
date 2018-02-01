@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 interface Address {
     addressLine1: string;
@@ -20,23 +19,18 @@ export class AddressComponent implements OnInit {
     @Input() addLabel;
     @Input() addID;
     @Input() config;
-   hrefID;
-    // addLabel = 'Panna';
-    address: Address;
+    @Input() address;
+    @Input() isCheckbox;
+    @Output() addressUpdated = new EventEmitter<Address>();
+    hrefID;
     configProp;
     constructor() {
-        this.address = {
-            addressLine1: 'string',
-            addressLine2: 'string',
-            city: 'string',
-            state: 'string',
-            country: 'India',
-            pinCode: 123456
-        };
     }
-
     ngOnInit() {
         this.hrefID = `#${this.addID}`;
         this.configProp = this.config;
+     }
+     addressChanged = () => {
+         this.addressUpdated.emit(this.address);
      }
 }

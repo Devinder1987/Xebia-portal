@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-const domainUrl = 'http://localhost:8080/';
+const domainUrl = 'http://192.168.1.140:8081/';
 const httpOptions = {
     withCredentials: true,
     headers: new HttpHeaders({ 'Access-Control-Allow-Origin': '*' })
@@ -34,7 +34,7 @@ export class HTTPService {
     }
     deleteCall(requestUrl, model, successFn, failedFn) {
         const url = domainUrl + requestUrl;
-        this.http.get(url).subscribe(data => {
+        this.http.delete(url, httpOptions).subscribe(data => {
             successFn(data);
         });
     }

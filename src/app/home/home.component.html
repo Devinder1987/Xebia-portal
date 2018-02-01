@@ -1,36 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light"style="
-padding-left: 0px;
-padding-right: 0px;
-padding-top: 0px;
-padding-bottom: 0px;
-background-color:#6a205f!important;
-">
-<a _ngcontent-c2="" class="navbar-brand" href="/home" style="
-margin-right: 0px;
-background-color:#e8d7e6;
-padding-right:  2px;
-padding-bottom: 1rem;
-"><img src=".././resources/webImages/xebia_logo.png" alt="Xebia"></a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light xebia-nav">
+<a _ngcontent-c2="" class="navbar-brand" href="/home" class="xebia-logo"><img src=".././resources/webImages/xebia_logo.png" alt="Xebia"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
     aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+</nav>
+<aside class="employee-aside">
+    <ul>
         <li class="nav-item" *ngFor="let routes of homePages">
           <a class="nav-link" routerLinkActive="active" [routerLink]="routes.routerLink">{{routes.routerText}}</a>
         </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0" #homeSearch="ngForm">
-        <input name="homneSearch" class="form-control mr-sm-4" type="search" placeholder="Emp ID" aria-label="Search" (ngModelChange)="autoSuggest($event)"
-          [(ngModel)]="seachModel.empID">
-          <ul class="list-group search-suggestion" [hidden]="!showSuggestion">
-            <li class="list-group-item" *ngFor="let item of suggestionList">{{item}}</li>
-          </ul>
-          <button class="btn btn-outline-purple my-2 my-sm-0" type="submit" style="margin-right:  10px;"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
-      </form>
-    </div>
-</nav>
+    </ul>
+</aside>
 <br>
 <router-outlet></router-outlet>

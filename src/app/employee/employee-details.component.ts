@@ -41,6 +41,14 @@ interface Employee {
     title: string;
     role: string;
 }
+interface Address {
+    addressLine1: string;
+    addressLine2: string;
+    city: string;
+    state: string;
+    country: string;
+    pinCode: number;
+}
 const createConfig = {
     name: {
         hidden: false,
@@ -267,6 +275,8 @@ export class EmployeeDetailsComponent implements OnInit {
     configProp: Object;
     isSave: Boolean = false;
     empID: string;
+    currentAddress: Address;
+    permanentAddress: Address;
     options: DatepickerOptions = {
         minYear: 1970,
         maxYear: 2030,
@@ -275,6 +285,8 @@ export class EmployeeDetailsComponent implements OnInit {
         firstCalendarDay: 0, // 0 - Sunday, 1 - Monday
         locale: frLocale
     };
+    asideList = ['General', 'Addresses', 'Skills', 'Projects'];
+    displayView = 'General';
     constructor(private empDetails: EmpDetailsService,
         private empApi: EmployeeApiService,
         private modal: ModalService,
@@ -300,6 +312,22 @@ export class EmployeeDetailsComponent implements OnInit {
             this.configProp = createConfig;
             this.isSave = true;
         }
+        this.currentAddress = {
+            addressLine1: '1229/C',
+            addressLine2: 'Dayanand Colony',
+            city: 'Gurgaon',
+            state: 'Haryana',
+            country: 'India',
+            pinCode: 122001
+        };
+        this.permanentAddress = {
+            addressLine1: 'Vill-Birhera',
+            addressLine2: 'P.O.-Karola',
+            city: 'Gurgaon',
+            state: 'Haryana',
+            country: 'India',
+            pinCode: 122504
+        };
     }
     displayEmpDetail = (empID) => {
         const empListSuccess = (data) => {
@@ -350,8 +378,15 @@ export class EmployeeDetailsComponent implements OnInit {
         this.modal.hideModal = false;
         this.isSave = false;
     }
+    asideFn = (aside) => {
+        this.displayView = aside;
+        console.log(aside);
+    }
     ngOnInit() {
         this.titleList = titleList;
         this.statusList = statusList;
+    }
+    addressUpdated = (address) => {
+        const newAddress = address;
     }
 }

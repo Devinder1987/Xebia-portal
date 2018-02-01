@@ -36,20 +36,4 @@ export class LoginApiService {
     };
     this.http.postCall(url, data, loginSuccess, LoginFailed);
   }
-  // loginSuccess = (data) => {
-  //   switch (data.code) {
-  //     case 1000:
-  //       this.cookieService.set('authToken', data.authToken);
-  //       this.router.navigate(['./home']);
-  //       this.LoginSuccess = true;
-  //       break;
-  //     default:
-  //       this.LoginSuccess = false;
-  //       break;
-  //   }
-
-  // }
-  // LoginFailed = (err) => {
-  //   this.errorMsg = err.error.description;
-  // }
 }
