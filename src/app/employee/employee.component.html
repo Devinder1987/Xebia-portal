@@ -1,24 +1,140 @@
-<div class="row container" style="margin:auto;">
-
-  <div class="detail-card col-lg-2 col-md-5 col-sm-5 col-xs-12 container" *ngFor="let employee of employeeDetails" (click)="viewEmployeeDetails(employee.emp_id)">
-    <p class="text-center login-text"> <b>{{employee.emp_id}}</b> : {{employee.name}} </p>
-    <hr/> {{employee.title}} &nbsp;&nbsp;&nbsp;&nbsp; {{employee.status}}
-    <hr/>
-    <p class="text-center login-text">
-      <a routerLink="/home/empdetails" routerLinkActive="active">
-        <i class="fa fa-eye-slash fa-2x" aria-hidden="true"></i>
-      </a> &nbsp;&nbsp;&nbsp;&nbsp;
-      <a [routerLink]="['home/empdetails;emp_id=',employee.emp_id]" routerLinkActive="active">
-        <i class="fa fa-address-card fa-2x"></i>
-      </a>&nbsp;&nbsp;&nbsp;&nbsp;
-      <a routerLink="/home/address" routerLinkActive="active">
-        <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i>
-      </a>
-    </p>
-  </div>
-
-
+<div id="nav-section">
+  <nav>Hello</nav>
 </div>
-<a href="/home/empdetails" class="add_emp_btn">
+<section id="workboard-section" class="row">
+  <div id="sidebar-section" class="col-sm-2">
+    <div>Search</div>
+    <div class="sidebar container row">
+      <div class="search-section">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">
+              <i class="fa fa-search"></i>
+            </span>
+          </div>
+        </div>
+        <div class="criteria-section">
+          <a href="#">Active(default)</a> |
+          <a href="#">All</a> |
+          <a href="#">InActive</a>
+
+        </div>
+      </div>
+      <hr>
+      <div class="result-section">
+        <div class="employee" *ngFor="let employee of employeeList">
+          <div class="rs-disp-line">
+            <span>Name</span>:
+            <span>
+              <a class="btnLinks" (click)="getEmployeeDetails(employee.emp_id)">{{employee.emp_name}}</a>
+            </span>
+          </div>
+          <div class="rs-disp-line">
+            <span>Project</span>:
+            <span>Project</span>:
+            <span>
+              <!-- <a href="" data-src="project" data-opt="1">Mckinsey DOF</a> -->
+            </span>
+          </div>
+          <div class="criteria-section">
+            <a href="#">Details</a> |
+            <a href="#">Team</a> |
+            <a href="#">Skills</a>
+
+          </div>
+          <hr>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div id="view-section" class="col-sm-9">
+    <div class="component-view container" [hidden]="hideEmpDetails">
+      <br>
+      <div class="component-head">
+        <h2>Details
+          <i class="fa fa-arrow-circle-up"></i>
+          <button class="pull-right btn btn-xebia" (click)="editEmployee()">
+            EDIT <i class="fa fa-edit"></i> 
+          </button>
+        </h2>
+      </div>
+      <hr>
+      <div class="component-body row">
+        <div class="component-body-left col-sm-6">
+          <div class="form-group row">
+            <label for="emp_id" class="col-sm-4">Emp ID:</label>
+            <input type="emp_id" class="form-control col-sm-6" id="emp_id" [disabled]="isDisabled" placeholder="Enter Emp ID" [(ngModel)]="empData.emp_id" name="emp_id" #emp_id="ngModel">
+          </div>
+        </div>
+        <div class="component-body-right col-sm-6">
+          <div class="form-group row">
+            <label for="name" class="col-sm-4">Name:</label>
+            <input type="text" class="form-control col-sm-6" id="name" [disabled]="isDisabled" placeholder="Enter name" [(ngModel)]="empData.emp_name" name="emp_name" #emp_name="ngModel">
+          </div>
+        </div>
+
+        <div class="component-body-right col-sm-6">
+          <div class="form-group row">
+            <label for="title" class="col-sm-4">Title:</label>
+            <select class="form-control col-sm-6" [(ngModel)]="empData.emp_title" name="emp_title" [disabled]="isDisabled" #emp_title="ngModel">
+              <option value="" selected>Select Title</option>
+              <option value="Consultant">Consultant</option>
+              <option value="Senior Consultant">Senior Consultant</option>
+          </select>
+          </div>
+        </div>
+
+      <div class="component-body-right col-sm-6">
+        <div class="form-group row">
+          <label for="status" class="col-sm-4">Status:</label>
+          <select class="form-control col-sm-6" [(ngModel)]="empData.emp_status" id="emp_status" name="emp_status"  [disabled]="isDisabled" #emp_status="ngModel">
+            <option value="" selected>Select Status</option>
+            <option value="deployable">Deployable</option>
+            <option value="soft_blocked">Soft Blocked</option>
+        </select>
+        </div>
+      </div>
+      
+        <div class="component-body-right col-sm-6">
+          <div class="form-group row">
+            <label for="doj" class="col-sm-4">Date of Joining:</label>
+            <input type="date" class="form-control col-sm-6" id="emp_doj" [disabled]="isDisabled" [value]="empData.emp_doj | date:'yyyy-MM-dd'" name="emp_doj" (input)="empData.doj=parseDate($event.target.value)">
+          </div>
+        </div>
+        <div class="component-body-left col-sm-6">
+          <div class="form-group row">
+            <label for="email" class="col-sm-4">Email:</label>
+            <input type="email" class="form-control col-sm-6" id="emp_email" [disabled]="isDisabled" placeholder="Enter Email" [(ngModel)]="empData.emp_email" name="emp_email" #emp_email="ngModel">
+          </div>
+        </div>
+        <div class="component-body-right col-sm-6">
+          <div class="form-group row">
+            <label for="phone" class="col-sm-4">Phone:</label>
+            <input type="phone" class="form-control col-sm-6" id="emp_phone" [disabled]="isDisabled" placeholder="Enter Phone" [(ngModel)]="empData.emp_phone" name="emp_phone" #emp_phone="ngModel">
+          </div>
+        </div>
+      </div>
+      <div class="component-footer">
+        <button class="pull-right btn btn-xebia" (click)="saveEmployee()">
+          <i class="fa fa-save"></i> Save
+        </button>
+        <span class="pull-right btn btn-xebia">
+          <i class="fa fa-cut"></i> Cancel
+
+        </span>
+        <span class="pull-right btn btn-xebia">
+          <i class="fa fa-ban"></i> Clear
+
+        </span>
+      </div>
+      <br>
+    </div>
+  </div>
+</section>
+
+<!-- <a href="/home/empdetails" class="add_emp_btn">
   <div class="obj"><i class="fa fa-user-plus" aria-hidden="true"></i></div>
-</a>
+</a> -->

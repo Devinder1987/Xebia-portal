@@ -7,36 +7,29 @@ import { NgDatepickerModule } from 'ng2-datepicker';
 // Router
 import { AppRoutingModule } from './app.router';
 
-// Pages
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './home/about.component';
 import { ReportComponent } from './report/report.component';
 import { ModalComponent, ModalService } from './modal/modal.component';
 import { EmployeeComponent } from './employee/employee.component';
-import { EmployeeDetailsComponent } from './employee/employee-details.component';
-import { AddressComponent } from './employee/address-component';
-import { SkillsComponent } from './employee/skills-component';
-import { SingleSkillsComponent } from './employee/single-skill-component';
+import { ProjectComponent } from './project/project.component';
 
 // Service
 import { LoginApiService } from './services/login-api.service';
 import { HTTPService } from './services/http-call.service';
+import { DataTranseferService } from './services/data-transefer.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    AboutComponent,
     ReportComponent,
     ModalComponent,
     EmployeeComponent,
-    EmployeeDetailsComponent,
-    AddressComponent,
-    SkillsComponent,
-    SingleSkillsComponent
+    ProjectComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +38,7 @@ import { HTTPService } from './services/http-call.service';
     HttpClientModule,
     NgDatepickerModule
   ],
-  providers: [LoginApiService, HTTPService, CookieService, ModalService],
+  providers: [LoginApiService, HTTPService, CookieService, ModalService, DataTranseferService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-const domainUrl = 'http://192.168.1.140:8081/';
+const domainUrl = 'http://localhost:8080/';
 const httpOptions = {
     withCredentials: true,
     headers: new HttpHeaders({ 'Access-Control-Allow-Origin': '*' })
@@ -11,6 +11,7 @@ export class HTTPService {
     getCall(requestUrl, successFn, failedFn) {
         const url = domainUrl + requestUrl;
         this.http.get(url, httpOptions).subscribe(data => {
+            console.log("from details: "+data);
             successFn(data);
         }, err => {
             failedFn(err);

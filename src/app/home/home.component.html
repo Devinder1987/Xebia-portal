@@ -1,16 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light xebia-nav">
-<a _ngcontent-c2="" class="navbar-brand" href="/home" class="xebia-logo"><img src=".././resources/webImages/xebia_logo.png" alt="Xebia"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
-    aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-    </button>
-</nav>
-<aside class="employee-aside">
-    <ul>
-        <li class="nav-item" *ngFor="let routes of homePages">
-          <a class="nav-link" routerLinkActive="active" [routerLink]="routes.routerLink">{{routes.routerText}}</a>
-        </li>
-    </ul>
-</aside>
-<br>
-<router-outlet></router-outlet>
+<div id="nav-section">
+    <nav>Hello</nav>
+</div>
+<div id="view-section" class="row">
+    <div class="container">
+        <span class="col-3">
+            <button class="btn btn-success homebtn"  routerLink="/home/employee"> Employee</button>
+        </span>
+        <span class="col-3">
+            <button class="btn btn-success homebtn" routerLink="/home/project"> Project</button>
+        </span>
+        <span class="col-3">
+            <button class="btn btn-success homebtn"> Report</button>
+        </span>
+    </div>
+</div>

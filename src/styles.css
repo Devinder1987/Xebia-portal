@@ -1,37 +1,54 @@
+
+
+html,body{
+    overflow-x:hidden; 
+    font-size: 12px;
+}
 a{
-    color: #6a205f;
+    text-decoration: none;
+    color: #fff;
+}
+a:hover{
+    color: #f7eff7;
 }
 
-/* You can add global styles to this file, and also import other style files */
-.ngx-datepicker-calendar-container[_ngcontent-c4]{
-    z-index: 10000 !important;
-}
-.ngx-datepicker-input[_ngcontent-c4]{
-    font-size: inherit !important;
-    border: 0 !important;
-    padding: 0 !important;
-}
-.add_emp_btn {
-    height: 70px;
-    width: 70px;
-    border-radius: 50%;
-    position: fixed;
-    bottom: 5%;
-    right: 5%;
-    background-color: #6a205f;
-}
-
-.add_emp_btn > .obj{
-    text-align: center;
-    font-size: 32px;
-    color: white;
-    position: relative;
-    bottom: -10%;
-   
-}
-.padding-20{
-    padding: 20px;
-}
-.width-100{
+hr{
     width: 100%;
+    color: #f7eff7;
+    border:1px solid #f7eff7;
+}
+.result-section{
+    width: 100%;
+}
+
+label{
+    background-color: #f7eff7;
+    text-align: center;
+    margin: 0 1%;
+    padding-top: 1%;
+}
+
+.form-control{
+    border: none;
+    border-bottom: 1px solid #6c1e5f;
+    border-top: 0px ;
+    border-left: 0px ;
+    border-right: 0px ;
+    border-radius: 0px;
+}
+
+.form-control:active{
+    border-bottom: 3px solid #6c1e5f;
+    transition:none;
+}
+
+.form-control:focus{
+    border-bottom: 3px solid #6c1e5f;
+    box-shadow:none;
+}
+.input-group-text{
+    border: 0px;
+    background-color: #6c1e5f;
+    border-radius: 0%;
+    color: #f7eff7;
 }

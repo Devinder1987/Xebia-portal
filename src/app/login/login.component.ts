@@ -11,16 +11,19 @@ import { ModalService } from '../modal/modal.component';
 })
 export class LoginComponent implements OnInit {
   @Output() showPopup = new EventEmitter<boolean>();
-  model = new LoginData('', '');
+  model = {
+    username:'',
+    password:''
+  }
   LoginSuccess = false;
   constructor(private loginApi: LoginApiService,
     private modal: ModalService) { }
   ngOnInit() {
   }
   onSubmit = () => {
-    this.showPopup.emit(true);
+    //this.showPopup.emit(true);
     this.loginApi.login(this.model, this.loginSuccess, this.loginFailed);
-    this.LoginSuccess = !this.loginApi.LoginSuccess;
+    //this.LoginSuccess = !this.loginApi.LoginSuccess;
   }
   loginSuccess = () => {
     console.log('Success');

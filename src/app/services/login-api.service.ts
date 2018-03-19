@@ -11,11 +11,7 @@ export class LoginApiService {
     private cookieService: CookieService,
     private router: Router) { }
   login = (model, success, failed) => {
-    const url = `login`; // ?username=${model.userName}&password=${model.password}`;
-    const data = {
-      username: model.userName,
-      password: model.password
-    };
+    const url = `login`; // ?username=${model.userName}&password=${model.}`;s
     const loginSuccess = (successData) => {
       switch (successData.code) {
         case 1000:
@@ -34,6 +30,6 @@ export class LoginApiService {
       this.errorMsg = err.error.description;
       failed();
     };
-    this.http.postCall(url, data, loginSuccess, LoginFailed);
+    this.http.postCall(url, model, loginSuccess, LoginFailed);
   }
 }

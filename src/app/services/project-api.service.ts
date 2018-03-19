@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HTTPService } from './http-call.service';
 
 @Injectable()
-export class EmployeeApiService {
+export class ProjectApiService {
     constructor(private http: HTTPService) { }
     createEmployee = (data, successFn, failedFn) => {
         const url = 'create/employee/';
@@ -24,8 +24,8 @@ export class EmployeeApiService {
         };
         this.http.putCall(url, data, createSuccess, createFailed);
     }
-    employeeList = (success, failed) => {
-        const url = 'employeelist/';
+    projectList = (success, failed) => {
+        const url = 'projectlist/';
         const successFn = (data) => {
             success(data);
         };
@@ -34,8 +34,8 @@ export class EmployeeApiService {
         };
         this.http.getCall(url, successFn, failedFn);
     }
-    empDetail = (empID, success, failed) => {
-        const url = `employee/${empID}`;
+    projDetail = (projID, success, failed) => {
+        const url = `project/${projID}`;
         const successFn = (data) => {
             success(data);
         };

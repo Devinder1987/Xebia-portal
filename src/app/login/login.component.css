@@ -1,22 +1,17 @@
-.login-box{
-    position: absolute;
-    background: #f7f7f7;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    border: 2px solid #ededf1;
-    padding: 10px;
+.login{
+    margin-top: 150px;
+    height:400px;
+}
+.loginPanel{
+    background-color:#dadde0;
+    padding:50px;
     border-radius: 5px;
-    min-width: 390px;
 }
-.login-text{
-    text-align: center;
+.submitButton{
+    background-color: #256eaa;
+    color:white;
 }
-.form-group label{
-    width: 40%;
-}
-.form-group .form-control{
-    display: inline-block;
-    width: 58%;
+.loginPage{
+    background-color:#6d2d60;
+    height:100vh;
 }

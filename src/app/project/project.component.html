@@ -1,0 +1,103 @@
+<div id="nav-section">
+  <nav>Hello</nav>
+</div>
+<section id="workboard-section" class="row">
+  <div id="sidebar-section" class="col-sm-2">
+    <div>Search</div>
+    <div class="sidebar container row">
+      <div class="search-section">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <span class="input-group-text" id="basic-addon2">
+              <i class="fa fa-search"></i>
+            </span>
+          </div>
+        </div>
+        <div class="criteria-section">
+          <a href="#">Active(default)</a> |
+          <a href="#">All</a> |
+          <a href="#">InActive</a>
+
+        </div>
+      </div>
+      <hr>
+      <div class="result-section">
+        <div class="employee" *ngFor="let project of projectList">
+          <div class="rs-disp-line">
+            <span>Project Name</span>:
+            <span>
+              <a class="btnLinks" (click)="getProjectDetails(project.id)">{{project.proj_name}}</a>
+            </span>
+          </div>
+          <div class="rs-disp-line">
+            <span>Project Manager</span>:
+            <span>
+              <span>
+                <a class="btnLinks" (click)="getProjectManager(project.proj_mngr_id)">{{project.proj_mngr_name}}</a>
+              </span>
+            </span>
+          </div>
+          <div class="criteria-section">
+            <a href="#">Details</a> |
+            <a href="#">Team</a> |
+            <a href="#">Skills</a>
+
+          </div>
+          <hr>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div id="view-section" class="col-sm-9">
+    <div class="component-view container" [hidden]="showProjDetails">
+      <br>
+      <div class="component-head">
+        <h2>Details
+          <i class="fa fa-arrow-circle-up"></i>
+          <button class="pull-right btn btn-xebia" (click)="editEmployee()">
+            EDIT
+            <i class="fa fa-edit"></i>
+          </button>
+        </h2>
+      </div>
+      <hr>
+      <div class="component-body row">
+        <div class="component-body-left col-sm-6">
+          <div class="form-group row">
+            <label for="project_name" class="col-sm-4">Project Name:</label>
+            <input type="text" class="form-control col-sm-6" id="project_name" [disabled]="isDisabled" placeholder="Enter Project Name"
+              [(ngModel)]="projData.project_name" name="project_name" #project_name="ngModel">
+          </div>
+        </div>
+        <div class="component-body-right col-sm-6">
+          <div class="form-group row">
+            <label for="project_manager" class="col-sm-4">Project Manager:</label>
+            <input type="text" class="form-control col-sm-6" id="project_manager" [disabled]="isDisabled" placeholder="Enter Manager Name"
+              [(ngModel)]="projData.project_manager" name="project_manager" #project_manager="ngModel">
+          </div>
+        </div>
+      </div>
+      <div class="component-footer">
+        <button class="pull-right btn btn-xebia" (click)="saveEmployee()">
+          <i class="fa fa-save"></i> Save
+        </button>
+        <span class="pull-right btn btn-xebia">
+          <i class="fa fa-cut"></i> Cancel
+
+        </span>
+        <span class="pull-right btn btn-xebia">
+          <i class="fa fa-ban"></i> Clear
+
+        </span>
+      </div>
+      <br>
+    </div> -->
+  </div>
+</section>
+
+<!-- <a href="/home/empdetails" class="add_emp_btn">
+  <div class="obj"><i class="fa fa-user-plus" aria-hidden="true"></i></div>
+</a> -->
